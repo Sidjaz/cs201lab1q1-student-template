@@ -19,7 +19,50 @@ public class NumbersArray {
         System.out.println("Unique numbers : " + Arrays.toString(findUnique(input))); 
     }
 
-    // Write your methods here
-    
-}
+    public static int findMax(Integer[] input) {
+        int max = input[0];
 
+        for (int num : input) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+
+    public static Integer[] findDuplicates(Integer[] input) {
+        ArrayList<Integer> dupes = new ArrayList<>();
+
+        for (int i = 0; i < input.length; i++) {
+            int count = 0;
+
+            for (int j = 0; j < input.length; j++) {
+                if (input[i].equals(input[j])) {
+                    count++;
+                }
+            }
+            if (count > 1 && !dupes.contains(input[i])) {
+                dupes.add(input[i]);
+            }
+        }
+        return dupes.toArray(new Integer[0]);
+    }
+
+    public static Integer[] findUnique(Integer[] input) {
+        ArrayList<Integer> unique = new ArrayList<>();
+
+        for (int i = 0; i < input.length; i++) {
+            int count = 0;
+
+            for (int j = 0; j < input.length; j++) {
+                if (input[i].equals(input[j])) {
+                    count++;
+                }
+            }
+            if (count == 1) {
+                unique.add(input[i]);
+            }
+        }
+        return unique.toArray(new Integer[0]);
+    }
+}
